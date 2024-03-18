@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Port Scanner</title>
+</head>
+<body>
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg text-center">
+      <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
+  
+      <p class="mt-4 text-gray-500">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla eaque error neque
+        ipsa culpa autem, at itaque nostrum!
+      </p>
+    </div>
+  
+    <form action="/scan" method="post" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        
+        <div>
+            <label for="ip" class="sr-only">IP Address</label>
+    
+            <div class="relative">
+                <input id="ip" name="ip" required
+                    type="text"
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Enter IP address"
+                    style="border: 1px solid #000;"
+                    />
+            </div>
+        </div>
+
+        <div>
+            <label for="start_port" class="sr-only">Start Port:</label>
+    
+            <div class="relative">
+                <input type="number" id="start_port" name="start_port" required
+                    type="text"
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Enter start port"
+                    style="border: 1px solid #000;"
+                    />
+            </div>
+        </div>
+
+        <div>
+            <label for="end_port" class="sr-only">End Port</label>
+    
+            <div class="relative">
+                <input type="number" id="end_port" name="end_port" required
+                    type="text"
+                    class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                    placeholder="Enter end port"
+                    style="border: 1px solid #000;"
+                    />
+            </div>
+        </div>
+  
+        <button
+            type="submit"
+            class="inline-block rounded-lg bg-blue-500 w-full py-3 text-sm font-medium text-white">
+            Scan Ports
+        </button>
+      
+    </form>
+  </div>
+
+    {% if open_ports %}
+        <h2>Open Ports:</h2>
+        <ul>
+            {% for port in open_ports %}
+                <li>{{ port }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+</body>
+</html>
